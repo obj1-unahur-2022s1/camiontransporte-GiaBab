@@ -1,0 +1,5 @@
+import cosas.*
+
+object camion {
+
+}
