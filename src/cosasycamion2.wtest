@@ -1,0 +1,41 @@
+import camion2.*
+import cosas2.*
+
+describe "test en bultos" {
+	
+	test "primera prueba" {
+		
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(300)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.equals(7 ,camion.totalBultos())
+	}
+	
+	test "segunda prueba" {
+		
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		camion.cargar(paqueteLadrillos)
+		assert.equals(6 ,camion.totalBultos())	
+	}
+	
+	test "tercera prueba" {
+		
+		camion.cargar(residuosRadioactivos)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		bateriaAntiarea.tieneMisiles(false)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(105)
+		contenedor.annairCosa(paqueteLadrillos)
+		camion.cargar(contenedor)
+		assert.equals(6 ,camion.totalBultos())
+	}	
+}

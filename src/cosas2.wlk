@@ -10,6 +10,7 @@ object bumblebee {
 	method peso()= 500
 	method peligrosidad()= if(trasformado){30}else{15}
 	method trasformar(estado){ trasformado=estado }
+	method bultos()= 2
 }
 
 object paqueteLadrillos{
@@ -18,6 +19,10 @@ object paqueteLadrillos{
 	method cantidad(numero){ cantidad = numero}
 	method peso()= 2 * cantidad
 	method peligrosidad()=2
+	method bultos()=
+		if(cantidad<=100){1}
+		else if(cantidad>=101 and cantidad<=300){2}
+		else{3}
 }
 
 
@@ -27,6 +32,7 @@ object arena {
 	method nuevoPeso(numero){peso = numero} 
 	method peso()= peso
 	method peligrosidad()= 1
+	method bultos()=1
 }
 
 object bateriaAntiarea {
@@ -35,6 +41,7 @@ object bateriaAntiarea {
 	method peso()= if(misiles){300}else{200}
 	method peligrosidad()= if(misiles){100}else{0}
 	method tieneMisiles(estado){ misiles=estado }
+	method bultos()= if(misiles){2}else{1}
 }
 
 object contenedor {
@@ -46,6 +53,7 @@ object contenedor {
 		if(cosas.size()>0)
 			{cosas.max({c=>c.peligrosidad()}).peligrosidad()}
 		else{0}
+	method bultos()=1+cosas.sum({c=>c.bultos()})
 }
 
 object residuosRadioactivos {
@@ -53,7 +61,8 @@ object residuosRadioactivos {
 	
 	method nuevoPeso(numero){ peso = numero}
 	method peso()= peso
-	method peligrosidad()= 200
+	method peligrosidad()= 0
+	method bultos()=1
 }
 
 object embalajeSeguridad {
@@ -62,4 +71,5 @@ object embalajeSeguridad {
 	method cosaEmbalaja(objecto){cosa = objecto}
 	method peso()= cosa.peso()
 	method peligrosidad()= cosa.peligrosidad()/2
+	method bultos()=2
 }

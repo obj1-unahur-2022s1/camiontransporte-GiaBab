@@ -1,3 +1,77 @@
 import camion.*
 import cosas.*
 
+describe "test camion" {
+	
+	test "peso total" {
+		bumblebee.trasformar(true)
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.equals(2110, camion.pesoTotal())
+	}
+	
+	test "exedio de peso?" {
+		bumblebee.trasformar(true)
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.notThat(camion.excedidoDePeso())
+	}
+	
+	test "que peso tiene" {
+		bumblebee.trasformar(true)
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.equals([500,150,300,160], camion.pesos())
+	}
+	
+	test "algo que pesa entre 400 y 700" {
+		bumblebee.trasformar(true)
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.that(camion.tieneAlgoQuePesaEntre(400, 700))
+	}
+	
+	test "algo que pesa entre 0 y 100" {
+		bumblebee.trasformar(true)
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.notThat(camion.tieneAlgoQuePesaEntre(0, 100))
+	}
+	
+	test "algo mas peligroso que bumblebee" {
+		bumblebee.trasformar(true)
+		camion.cargar(bumblebee)
+		arena.nuevoPeso(150)
+		camion.cargar(arena)
+		camion.cargar(bateriaAntiarea)
+		paqueteLadrillos.cantidad(80)
+		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
+		camion.cargar(embalajeSeguridad)
+		assert.equals([bateriaAntiarea],camion.objectoMasPeligrososQue(bumblebee))
+	}
+}
