@@ -9,7 +9,7 @@ object camion {
 	method pesoTotal()= 1000 + cosas.sum({c => c.peso()})
 	method excedidoDePeso()= self.pesoTotal() > 2500
 	method objectosQueSuperanPeligrosidad(nivel)= 
-		cosas.filter({c => c.peligrosidad()<nivel})
+		cosas.filter({c => c.peligrosidad()>nivel})
 	method objectoMasPeligrososQue(cosa)= 
 		self.objectosQueSuperanPeligrosidad(cosa.peligrosidad())
 	method puedeCircularEnRuta(limitePeligrosidad)=

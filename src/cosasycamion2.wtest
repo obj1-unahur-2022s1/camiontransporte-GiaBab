@@ -32,10 +32,29 @@ describe "test en bultos" {
 		arena.nuevoPeso(150)
 		camion.cargar(arena)
 		bateriaAntiarea.tieneMisiles(false)
-		camion.cargar(bateriaAntiarea)
+		camion.cargar(bateriaAntiarea)	//por consecuencia los misiles se vuelven true
 		paqueteLadrillos.ponerCantidad(105)
 		contenedor.annairCosa(paqueteLadrillos)
+		contenedor.annairCosa(knightRider)
 		camion.cargar(contenedor)
-		assert.equals(7 ,camion.totalBultos())
+		assert.equals(8 ,camion.totalBultos())
 	}	
+}
+
+describe "algunos cambios" {
+	
+	test "cambio 1" {
+		camion.cargar(bumblebee)
+		paqueteLadrillos.ponerCantidad(100)
+		camion.cargar(paqueteLadrillos)
+		assert.equals([bumblebee], camion.objectosQueSuperanPeligrosidad(16))
+	}
+	
+	test "cambio 2"{
+		contenedor.annairCosa(residuosRadioactivos)
+		contenedor.annairCosa(bateriaAntiarea)
+		contenedor.annairCosa(knightRider)
+		camion.cargar(contenedor)
+		assert.equals(1915, camion.pesoTotal())
+	}
 }

@@ -3,6 +3,16 @@ import cosas.*
 
 describe "test de cosas" {
 	
+	method testContenedor1(){
+		contenedor.annairCosa(knightRider)
+		contenedor.annairCosa(bateriaAntiarea) 
+	}
+	method testContenedor2(){
+		contenedor.annairCosa(knightRider)
+		bateriaAntiarea.tieneMisiles(false)
+		contenedor.annairCosa(bateriaAntiarea)  
+	}
+	
 	test "resudio radioactivo en embalaje test de peligrosidad " {
 		residuosRadioactivos.nuevoPeso(30)
 		embalajeSeguridad.cosaEmbalaja(residuosRadioactivos)
@@ -16,28 +26,22 @@ describe "test de cosas" {
 	}
 	
 	test "contenedor con misiles de peso" {
-		contenedor.annairCosa(knightRider)
-		contenedor.annairCosa(bateriaAntiarea) //con misiles  
+		self.testContenedor1()
 		assert.equals(900, contenedor.peso())
 	}
 	
 	test "contenedor sin misiles de peso" {
-		contenedor.annairCosa(knightRider)
-		bateriaAntiarea.tieneMisiles(false)
-		contenedor.annairCosa(bateriaAntiarea) //con misiles  
+		self.testContenedor2() 
 		assert.equals(800, contenedor.peso())
 	}
 	
 	test "contenedor con misiles de peligrosidad" {
-		contenedor.annairCosa(knightRider)
-		contenedor.annairCosa(bateriaAntiarea) //con misiles  
+		self.testContenedor1() 
 		assert.equals(100, contenedor.peligrosidad())
 	}
 	
 	test "contenedor sin misiles de peligrosidad" {
-		contenedor.annairCosa(knightRider)
-		bateriaAntiarea.tieneMisiles(false)
-		contenedor.annairCosa(bateriaAntiarea) //con misiles  
+		self.testContenedor2() 
 		assert.equals(10, contenedor.peligrosidad())
 	}
 	

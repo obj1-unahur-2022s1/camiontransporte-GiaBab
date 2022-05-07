@@ -71,7 +71,7 @@ object residuosRadioactivos {
 	method peso()= peso
 	method peligrosidad()= 200
 	method bultos()=1
-	method consecuencia(){self.nuevoPeso(self.peso()+13)}
+	method consecuencia(){self.nuevoPeso(self.peso()+15)}
 }
 
 object embalajeSeguridad {
