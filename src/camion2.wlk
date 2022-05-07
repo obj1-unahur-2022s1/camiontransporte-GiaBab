@@ -1,4 +1,4 @@
-import cosas.*
+import cosas2.*
 
 object camion {
 	const cosas = []
