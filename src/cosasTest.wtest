@@ -42,16 +42,16 @@ describe "test de cosas" {
 	}
 	
 	test "paquete de ladrillo peso" {
-		paqueteLadrillos.cantidad(10)
+		paqueteLadrillos.ponerCantidad(10)
 		assert.equals(20, paqueteLadrillos.peso())
-		paqueteLadrillos.cantidad(1)
+		paqueteLadrillos.ponerCantidad(1)
 		assert.equals(2, paqueteLadrillos.peso())
 	}
 	
 	test "paquete de ladrillo peligrosidad"{
-		paqueteLadrillos.cantidad(10)
+		paqueteLadrillos.ponerCantidad(10)
 		assert.equals(2, paqueteLadrillos.peligrosidad())
-		paqueteLadrillos.cantidad(1)
+		paqueteLadrillos.ponerCantidad(1)
 		assert.equals(2, paqueteLadrillos.peligrosidad())
 	}
 }

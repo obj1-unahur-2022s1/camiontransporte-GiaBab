@@ -15,7 +15,8 @@ object bumblebee {
 object paqueteLadrillos{
 	var cantidad = 1
 	
-	method cantidad(numero){ cantidad = numero}
+	method ponerCantidad(numero){ cantidad = numero}
+	method cantidad()=cantidad
 	method peso()= 2 * cantidad
 	method peligrosidad()=2
 }

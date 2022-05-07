@@ -9,7 +9,7 @@ describe "test en bultos" {
 		arena.nuevoPeso(150)
 		camion.cargar(arena)
 		camion.cargar(bateriaAntiarea)
-		paqueteLadrillos.cantidad(300)
+		paqueteLadrillos.ponerCantidad(300)
 		embalajeSeguridad.cosaEmbalaja(paqueteLadrillos)
 		camion.cargar(embalajeSeguridad)
 		assert.equals(7 ,camion.totalBultos())
@@ -21,7 +21,7 @@ describe "test en bultos" {
 		arena.nuevoPeso(150)
 		camion.cargar(arena)
 		camion.cargar(bateriaAntiarea)
-		paqueteLadrillos.cantidad(80)
+		paqueteLadrillos.ponerCantidad(80)
 		camion.cargar(paqueteLadrillos)
 		assert.equals(6 ,camion.totalBultos())	
 	}
@@ -33,9 +33,9 @@ describe "test en bultos" {
 		camion.cargar(arena)
 		bateriaAntiarea.tieneMisiles(false)
 		camion.cargar(bateriaAntiarea)
-		paqueteLadrillos.cantidad(105)
+		paqueteLadrillos.ponerCantidad(105)
 		contenedor.annairCosa(paqueteLadrillos)
 		camion.cargar(contenedor)
-		assert.equals(6 ,camion.totalBultos())
+		assert.equals(7 ,camion.totalBultos())
 	}	
 }
